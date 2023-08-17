@@ -1,2 +1,7 @@
+loguru
+tqdm
+trl
+torch
+sentencepiece
 transformers
 peft
