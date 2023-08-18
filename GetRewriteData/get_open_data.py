@@ -3,7 +3,7 @@
 @email        : adolf1321794021@gmail.com
 @Date         : 2023-04-20 14:23:34
 @LastEditors: pkq1688
-@LastEditTime: 2023-08-18 17:29:43
+@LastEditTime: 2023-08-18 21:15:52
 @Description  : 
 """
 import random
@@ -30,7 +30,7 @@ def handle_base_data():
     f_train = open("dataset/classical_cls/cls_data_train.txt","w")
     f_test = open("dataset/classical_cls/cls_data_test.txt","w")
     for gw, bh in zip(gw_list, bh_list):
-        if random.random() > 0.8:
+        if random.random() > 0.99999:
             f_train.write(f"1\t{gw}\n")
             f_train.write(f"0\t{bh}\n")
         else:

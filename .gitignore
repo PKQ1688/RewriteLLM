@@ -133,3 +133,6 @@ dmypy.json
 model
 dataset/
 dataset
+
+checkpoints/
+logs/

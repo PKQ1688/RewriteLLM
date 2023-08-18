@@ -13,3 +13,4 @@ fastapi
 uvicorn
 rich
 scikit-learn
+mdtex2html

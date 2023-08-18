@@ -5,10 +5,10 @@ python TrainModle/train_cls_model.py \
     --save_dir "checkpoints/wyw_classify" \
     --img_log_dir "logs/wyw_classify" \
     --img_log_name "RoBERTa" \
-    --num_labels 8 \
-    --batch_size 16 \
+    --num_labels 2 \
+    --batch_size 256 \
     --max_seq_len 128 \
-    --valid_steps 50 \
-    --logging_steps 10 \
-    --num_train_epochs 20 \
+    --valid_steps 500 \
+    --logging_steps 100 \
+    --num_train_epochs 5 \
     --device "cuda:0"
