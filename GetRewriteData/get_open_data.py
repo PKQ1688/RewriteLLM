@@ -3,9 +3,10 @@
 @email        : adolf1321794021@gmail.com
 @Date         : 2023-04-20 14:23:34
 @LastEditors: pkq1688
-@LastEditTime: 2023-08-18 15:05:04
+@LastEditTime: 2023-08-18 17:29:43
 @Description  : 
 """
+import random
 from pathlib import Path
 
 def handle_base_data():
@@ -26,7 +27,19 @@ def handle_base_data():
             
             assert len(gw_list) == len(bh_list)
 
-    with open("dataset/classical_cls/cls_data.txt","w") as f:
-        for gw, bh in zip(gw_list, bh_list):
-            f.write(f"{gw}\t1\n")
-            f.write(f"{bh}\t0\n")
+    f_train = open("dataset/classical_cls/cls_data_train.txt","w")
+    f_test = open("dataset/classical_cls/cls_data_test.txt","w")
+    for gw, bh in zip(gw_list, bh_list):
+        if random.random() > 0.8:
+            f_train.write(f"1\t{gw}\n")
+            f_train.write(f"0\t{bh}\n")
+        else:
+            f_test.write(f"1\t{gw}\n")
+            f_test.write(f"0\t{bh}\n")
+    
+    f_train.close()
+    f_test.close()
+
+        
+if __name__ == "__main__":
+    handle_base_data()

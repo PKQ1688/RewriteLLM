@@ -11,3 +11,5 @@ accelerate
 protobuf
 fastapi
 uvicorn
+rich
+scikit-learn

@@ -1,0 +1,14 @@
+python TrainModle/train_cls_model.py \
+    --model "model/chinese-roberta-wwm-ext" \
+    --train_path "dataset/classical_cls/cls_data_train.txt" \
+    --dev_path "dataset/classical_cls/cls_data_test.txt" \
+    --save_dir "checkpoints/wyw_classify" \
+    --img_log_dir "logs/wyw_classify" \
+    --img_log_name "RoBERTa" \
+    --num_labels 8 \
+    --batch_size 16 \
+    --max_seq_len 128 \
+    --valid_steps 50 \
+    --logging_steps 10 \
+    --num_train_epochs 20 \
+    --device "cuda:0"
