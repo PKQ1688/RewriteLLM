@@ -1,7 +1,13 @@
 loguru
 tqdm
 trl
+cpm_kernels
 torch
 sentencepiece
 transformers
 peft
+gradio
+accelerate
+protobuf
+fastapi
+uvicorn
