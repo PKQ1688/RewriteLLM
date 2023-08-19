@@ -6,9 +6,9 @@ python TrainModle/train_cls_model.py \
     --img_log_dir "logs/wyw_classify" \
     --img_log_name "RoBERTa" \
     --num_labels 2 \
-    --batch_size 256 \
+    --batch_size 64 \
     --max_seq_len 128 \
-    --valid_steps 500 \
+    --valid_steps 5000 \
     --logging_steps 100 \
-    --num_train_epochs 5 \
+    --num_train_epochs 3 \
     --device "cuda:0"

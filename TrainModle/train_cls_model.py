@@ -2,7 +2,7 @@
 @Author: pkq1688
 @Date: 2023-08-18 16:49:37
 @LastEditors: pkq1688
-@LastEditTime: 2023-08-18 17:09:07
+@LastEditTime: 2023-08-19 01:23:25
 @FilePath: /RewriteLLM/TrainModle/train_cls_model.py
 @Description: 
 """
@@ -132,6 +132,16 @@ args = parser.parse_args()
 
 writer = iSummaryWriter(log_path=args.img_log_dir, log_name=args.img_log_name)
 
+DEVICE = "cuda"
+DEVICE_ID = "0"
+CUDA_DEVICE = f"{DEVICE}:{DEVICE_ID}" if DEVICE_ID else DEVICE
+
+def torch_gc():
+    if torch.cuda.is_available():
+        with torch.cuda.device(CUDA_DEVICE):
+            torch.cuda.empty_cache()
+            torch.cuda.ipc_collect()
+
 
 def evaluate_model(model, metric, data_loader):
     """
@@ -191,6 +201,7 @@ def reset_console():
 
 def train():
     reset_console()
+    torch_gc()
     model = AutoModelForSequenceClassification.from_pretrained(
         args.model, num_labels=args.num_labels
     )
