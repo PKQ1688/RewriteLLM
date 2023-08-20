@@ -2,7 +2,7 @@
 @Author: pkq1688
 @Date: 2023-08-19 11:13:49
 @LastEditors: pkq1688
-@LastEditTime: 2023-08-19 11:27:34
+@LastEditTime: 2023-08-19 11:37:23
 @FilePath: /RewriteLLM/TrainModle/pretrain_llm_model.py
 @Description: 
 """
@@ -11,7 +11,7 @@ import os
 from dataclasses import dataclass, field
 from glob import glob
 from itertools import chain
-from typing import Optional, Mapping
+from typing import Optional, List, Dict, Any, Mapping
 
 import numpy as np
 import torch
