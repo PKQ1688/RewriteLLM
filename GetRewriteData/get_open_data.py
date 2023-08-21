@@ -3,13 +3,13 @@
 @email        : adolf1321794021@gmail.com
 @Date         : 2023-04-20 14:23:34
 @LastEditors: pkq1688
-@LastEditTime: 2023-08-19 00:54:17
+@LastEditTime: 2023-08-21 22:04:31
 @Description  : 
 """
 import random
 from pathlib import Path
 
-def handle_base_data():
+def handle_base_data(gen_pretrain_data=F):
     file_data_path = Path("/root/autodl-fs/Classical-Modern/双语数据")
 
     gw_list = []
@@ -27,18 +27,23 @@ def handle_base_data():
             
             assert len(gw_list) == len(bh_list)
 
-    f_train = open("dataset/classical_cls/cls_data_train.txt","w")
-    f_test = open("dataset/classical_cls/cls_data_test.txt","w")
-    for gw, bh in zip(gw_list, bh_list):
-        if random.random() < 0.99:  
-            f_train.write(f"1\t{gw}\n")
-            f_train.write(f"0\t{bh}\n")
-        else:
-            f_test.write(f"1\t{gw}\n")
-            f_test.write(f"0\t{bh}\n")
+    if not gen_pretrain_data:
+        f_train = open("dataset/classical_cls/cls_data_train.txt","w")
+        f_test = open("dataset/classical_cls/cls_data_test.txt","w")
+        for gw, bh in zip(gw_list, bh_list):
+            if random.random() < 0.99:  
+                f_train.write(f"1\t{gw}\n")
+                f_train.write(f"0\t{bh}\n")
+            else:
+                f_test.write(f"1\t{gw}\n")
+                f_test.write(f"0\t{bh}\n")
+        
+        f_train.close()
+        f_test.close()
     
-    f_train.close()
-    f_test.close()
+    else:
+        pass
+
 
         
 if __name__ == "__main__":

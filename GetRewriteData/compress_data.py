@@ -1,3 +1,11 @@
+"""
+@Author: pkq1688
+@Date: 2023-08-20 23:57:14
+@LastEditors: pkq1688
+@LastEditTime: 2023-08-21 21:55:53
+@FilePath: /RewriteLLM/GetRewriteData/compress_data.py
+@Description: 
+"""
 import os
 
 import json

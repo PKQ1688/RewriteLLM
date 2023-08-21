@@ -16,3 +16,4 @@ scikit-learn
 mdtex2html
 bitsandbytes
 zstandard
+jsonlines
