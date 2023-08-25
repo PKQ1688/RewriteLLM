@@ -43,7 +43,7 @@ def compress(input_file: str, write_path: str):
     print("total line: {}\ntotal files: {}".format(total_num, file_num))
 
 
-def batch_compress_preatrain_data():
+def batch_compress_pretrain_data():
     """
     批量压缩预训练数据。
     """
@@ -88,5 +88,5 @@ def batch_compress_sft_data():
 
 
 if __name__ == "__main__":
-    batch_compress_preatrain_data()
+    batch_compress_pretrain_data()
     # batch_compress_sft_data()

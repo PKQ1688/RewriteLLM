@@ -8,8 +8,10 @@
 """
 import random
 from pathlib import Path
+import jsonlines
 
-def handle_base_data(gen_pretrain_data=F):
+
+def handle_base_data(gen_pretrain_data=False):
     file_data_path = Path("/root/autodl-fs/Classical-Modern/双语数据")
 
     gw_list = []
@@ -24,27 +26,32 @@ def handle_base_data(gen_pretrain_data=F):
                     gw_list.append(line.replace("古文：", "").strip())
                 if "现代文：" in line:
                     bh_list.append(line.replace("现代文：", "").strip())
-            
+
             assert len(gw_list) == len(bh_list)
 
     if not gen_pretrain_data:
-        f_train = open("dataset/classical_cls/cls_data_train.txt","w")
-        f_test = open("dataset/classical_cls/cls_data_test.txt","w")
+        f_train = open("dataset/classical_cls/cls_data_train.txt", "w")
+        f_test = open("dataset/classical_cls/cls_data_test.txt", "w")
         for gw, bh in zip(gw_list, bh_list):
-            if random.random() < 0.99:  
+            if random.random() < 0.99:
                 f_train.write(f"1\t{gw}\n")
                 f_train.write(f"0\t{bh}\n")
             else:
                 f_test.write(f"1\t{gw}\n")
                 f_test.write(f"0\t{bh}\n")
-        
+
         f_train.close()
         f_test.close()
-    
+
     else:
-        pass
+        with jsonlines.open("dataset/classical_cls/pretrain_data/gw.jsonl", "w") as f:
+            for gw in gw_list:
+                f.write({"text": gw})
+
+        with jsonlines.open("dataset/classical_cls/pretrain_data/bh.jsonl", "w") as f:
+            for bh in bh_list:
+                f.write({"text": bh})
 
 
-        
 if __name__ == "__main__":
-    handle_base_data()
+    handle_base_data(gen_pretrain_data=True)
