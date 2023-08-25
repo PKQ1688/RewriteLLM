@@ -2,8 +2,8 @@
 @Author       : pkq1688
 @email        : adolf1321794021@gmail.com
 @Date         : 2023-04-20 14:23:34
-@LastEditors: pkq1688
-@LastEditTime: 2023-08-21 22:04:31
+@LastEditors  : pkq1688
+@LastEditTime : 2023-08-21 22:04:31
 @Description  : 
 """
 import random
@@ -12,7 +12,7 @@ import jsonlines
 
 
 def handle_base_data(gen_pretrain_data=False):
-    file_data_path = Path("/root/autodl-fs/Classical-Modern/双语数据")
+    file_data_path = Path("dataset/Classical-Modern/双语数据")
 
     gw_list = []
     bh_list = []
