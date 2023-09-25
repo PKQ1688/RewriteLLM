@@ -12,7 +12,7 @@ import jsonlines
 
 
 def handle_base_data(gen_pretrain_data=False):
-    file_data_path = Path("dataset/Classical-Modern/双语数据")
+    file_data_path = Path("Classical-Modern/双语数据")
 
     gw_list = []
     bh_list = []
@@ -44,11 +44,11 @@ def handle_base_data(gen_pretrain_data=False):
         f_test.close()
 
     else:
-        with jsonlines.open("dataset/classical_cls/pretrain_data/gw.jsonl", "w") as f:
+        with jsonlines.open("data/pretrain_data/gw.jsonl", "w") as f:
             for gw in gw_list:
                 f.write({"text": gw})
 
-        with jsonlines.open("dataset/classical_cls/pretrain_data/bh.jsonl", "w") as f:
+        with jsonlines.open("data/pretrain_data/bh.jsonl", "w") as f:
             for bh in bh_list:
                 f.write({"text": bh})
 

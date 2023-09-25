@@ -47,10 +47,10 @@ def batch_compress_pretrain_data():
     """
     批量压缩预训练数据。
     """
-    source_path = "dataset/Classical-Modern/古文原文"  # 源数据文件
-    target_path = "dataset/pretrain_data"  # 压缩后存放地址
+    source_path = "data/pretrain_data"  # 源数据文件
+    target_path = "data/pretrain_data_compress"  # 压缩后存放地址
 
-    files = ["MNBVC_news", "MNBVC_qa", "MNBVC_wiki"]
+    files = ["bh", "gw"]
 
     compress_file = []
     for file in files:
