@@ -1,41 +1,7 @@
-python TrainModle/pretrain_llm_model.py \
-    --model_type chatglm \
-    --model_name_or_path model/llm/chatglm2-6b \
-    --train_file_dir ./data/pretrain \
-    --validation_file_dir ./data/pretrain \
-    --per_device_train_batch_size 4 \
-    --per_device_eval_batch_size 4 \
-    --do_train \
-    --do_eval \
-    --use_peft True \
-    --seed 42 \
-    --fp16 \
-    --max_train_samples 10000 \
-    --max_eval_samples 10 \
-    --num_train_epochs 0.5 \
-    --learning_rate 2e-4 \
-    --warmup_ratio 0.05 \
-    --weight_decay 0.01 \
-    --logging_strategy steps \
-    --logging_steps 10 \
-    --eval_steps 50 \
-    --evaluation_strategy steps \
-    --save_steps 500 \
-    --save_strategy steps \
-    --save_total_limit 3 \
-    --gradient_accumulation_steps 1 \
-    --preprocessing_num_workers 1 \
-    --block_size 1024 \
-    --output_dir outputs-pt-v1 \
-    --overwrite_output_dir \
-    --ddp_timeout 30000 \
-    --logging_first_step True \
-    --target_modules all \
-    --lora_rank 8 \
-    --lora_alpha 16 \
-    --lora_dropout 0.05 \
-    --torch_dtype float16 \
-    --device_map auto \
-    --report_to tensorboard \
-    --ddp_find_unused_parameters False \
-    --gradient_checkpointing True
+#!/bin/sh
+
+accelerate launch \
+  --config_file configs/accelerate_configs/ds_stage1.yaml \
+  --main_process_port 27643 TrainModel/pretrain_llm_model.py \
+  --train_config /sft_configs/llama.yaml \
+  --model_config openlm-research/open_llama_7b_v2

@@ -17,3 +17,5 @@ mdtex2html
 bitsandbytes
 zstandard
 jsonlines
+torchinfo
+deepspeed

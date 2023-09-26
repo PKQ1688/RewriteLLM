@@ -3,7 +3,7 @@
 @Date: 2023-08-18 16:49:37
 @LastEditors: pkq1688
 @LastEditTime: 2023-08-19 01:23:25
-@FilePath: /RewriteLLM/TrainModle/train_cls_model.py
+@FilePath: /RewriteLLM/TrainModel/train_cls_model.py
 @Description: 
 """
 import os
@@ -135,6 +135,7 @@ writer = iSummaryWriter(log_path=args.img_log_dir, log_name=args.img_log_name)
 DEVICE = "cuda"
 DEVICE_ID = "0"
 CUDA_DEVICE = f"{DEVICE}:{DEVICE_ID}" if DEVICE_ID else DEVICE
+
 
 def torch_gc():
     if torch.cuda.is_available():
