@@ -1,0 +1,44 @@
+data:
+  mode: "pretrain"
+  data:
+    bh: "data/pretrain_data_compress/bh/*.jsonl.zst"
+    gw: "data/pretrain_data_compress/gw/*.jsonl.zst"
+  sample_policy_file: "configs/sample_policy/pretrain/classical.json"
+  pad_to_max: false
+  sequence_sample_mode: "none"
+  concat_multiple_sequence: true
+  num_sequences: 10
+  seq_length: 128
+  tokenizer_path: "model/llm/chatglm2"
+  split_by_shard: false
+train:
+  train_batch_size: 1
+  num_training_steps: 10000
+  num_warmup_steps: 100
+  initializer_range: 1.0e-2
+  lr: 5.0e-5
+  weight_decay: 1.0e-1
+  resize_model_vocab_size: false
+  ckpt: 'model/llm/chatglm2'
+  train_num_workers: 8
+  gradient_accumulation_steps: 30
+  prefetch_factor: 100
+  train_and_eval: false
+  gradient_checkpointing_enable: true
+  use_lora: false
+  target_modules: ['q_proj', 'v_proj']
+  save_total_limit: 3
+  img_log_dir: "log/pretrain/chatglm_6b_v2"
+  img_log_name: "chatglm_6b_v2 test"
+eval:
+  eval_methods: ["single_choice_eval", "generation_eval"]
+  single_choice_dataset:
+    single_choice_file: eval_data/knowledge/knowledge_and_reasoning.jsonl
+  generation_dataset:
+    general_test: eval_data/pretrain/generation_test.jsonl
+  genration_eval_save_path: "eval_while_training/pretrain/chatglm_6b_v2"
+# global step
+log_interval: 10
+eval_interval: 50
+save_interval: 100
+work_dir: "checkpoints/pretrain/chatglm_6b_v2"

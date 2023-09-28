@@ -19,7 +19,7 @@ from torch.utils.data import DataLoader
 
 from peft import LoraConfig, TaskType, get_peft_model
 from datasets.distributed import split_dataset_by_node
-from transformers import AutoConfig, AutoModelForCausalLM, LlamaTokenizer, AutoTokenizer
+from transformers import AutoConfig, AutoModelForCausalLM, LlamaTokenizer, AutoTokenizer,AutoModel
 
 from datetime import timedelta
 from accelerate.utils import InitProcessGroupKwargs
@@ -66,7 +66,7 @@ def main():
     ):
         tokenizer = LlamaTokenizer.from_pretrained(config["data"]["tokenizer_path"])
     else:
-        tokenizer = AutoTokenizer.from_pretrained(config["data"]["tokenizer_path"])
+        tokenizer = AutoTokenizer.from_pretrained(config["data"]["tokenizer_path"],trust_remote_code=True)
 
     assert (
         tokenizer.pad_token
@@ -111,9 +111,10 @@ def main():
 
     if config["train"]["ckpt"] is not None:  # 在已有的预训练模型上进行continue training
         print("Loading ckpt from: {}".format(config["train"]["ckpt"]))
-        raw_model = AutoModelForCausalLM.from_pretrained(
-            config["train"]["ckpt"], trust_remote_code=True
-        )
+        # raw_model = AutoModelForCausalLM.from_pretrained(
+        #     config["train"]["ckpt"], trust_remote_code=True
+        # )
+        raw_model = AutoModel.from_pretrained(config["train"]["ckpt"], trust_remote_code=True)
 
         if model_config.vocab_size != len(tokenizer):
             resize_flag = config["train"].get("resize_model_vocab_size", True)
