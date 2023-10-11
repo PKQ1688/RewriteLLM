@@ -1,7 +1,7 @@
 python TrainModle/train_cls_model.py \
-    --model "model/chinese-roberta-wwm-ext" \
-    --train_path "dataset/classical_cls/cls_data_train.txt" \
-    --dev_path "dataset/classical_cls/cls_data_test.txt" \
+    --model "model/llm/chinese-roberta-wwm-ext" \
+    --train_path "data/classical_cls/cls_data_train.txt" \
+    --dev_path "data/classical_cls/cls_data_test.txt" \
     --save_dir "checkpoints/wyw_classify" \
     --img_log_dir "logs/wyw_classify" \
     --img_log_name "RoBERTa" \

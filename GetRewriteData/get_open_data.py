@@ -30,8 +30,8 @@ def handle_base_data(gen_pretrain_data=False):
             assert len(gw_list) == len(bh_list)
 
     if not gen_pretrain_data:
-        f_train = open("dataset/classical_cls/cls_data_train.txt", "w")
-        f_test = open("dataset/classical_cls/cls_data_test.txt", "w")
+        f_train = open("data/classical_cls/cls_data_train.txt", "w")
+        f_test = open("data/classical_cls/cls_data_test.txt", "w")
         for gw, bh in zip(gw_list, bh_list):
             if random.random() < 0.99:
                 f_train.write(f"1\t{gw}\n")
@@ -54,4 +54,4 @@ def handle_base_data(gen_pretrain_data=False):
 
 
 if __name__ == "__main__":
-    handle_base_data(gen_pretrain_data=True)
+    handle_base_data(gen_pretrain_data=False)
