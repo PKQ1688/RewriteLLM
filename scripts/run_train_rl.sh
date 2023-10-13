@@ -1,8 +1,6 @@
 CUDA_VISIBLE_DEVICES=0 python TrainModel/ppo_training.py \
-    --model_type chatglm \
-    --model_name_or_path model/llm/chatglm2 \
-    --tokenizer_name_or_path model/llm/chatglm2 \
-    --cache_dir model/llm/chatglm2 \
+    --model_type baichuan \
+    --model_name_or_path model/Baichuan2-7B-Chat \
     --reward_model_name_or_path checkpoints/wyw_classify/model_best \
     --torch_dtype float16 \
     --device_map auto \
